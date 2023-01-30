@@ -38,3 +38,4 @@ Nous utilisons sur **Openshift Cluster 4.7** fourni sur le système RHPDS dans l
 * https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
 * https://www.openshift.com/blog/announcing-openshift-gitops[Openshift GitOps]
 
+5.0
