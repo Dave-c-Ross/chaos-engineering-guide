@@ -221,9 +221,9 @@ image::grafana-number-total-singlestat.png[Grafana - Home,700]
 
 Après avoir créé la mesure de toutes les requêtes, vous allez définir une **métrique de toutes les requêtes réussies** (~ code d'erreur 5XX) pour 1 minute :
 
-Total des demandes: sum(rate(istio_requests_total{}[$time_interval]))
+ Total des demandes: sum(rate(istio_requests_total{}[$time_interval]))
 
-Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
+ Demandes réussies: sum(rate(istio_requests_total{response_code!~"5.*"}[$time_interval]))
 dans notre cas :
 
 _sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}", response_code!~"5.*"}[1m]))/ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{USER_ID}"}[1m])_
@@ -352,11 +352,11 @@ image::full-grafana-dashboard.png[Grafana - Home,900]
 
 Pour explorer ce tableau de bord on peut le voir comme :
 
-Pour explorer ce tableau de bord, nous pouvons le voir comme :
+Pour explorer ce tableau de bord, nous pouvons le voir comme:
 
-* [Red] un bloc de sélection de filtres dans lequel nous sélectionnons un espace de noms [Rose] ici chaos-engineering{USER_ID} et un service [Cyan] de l'application Voyage
+* [Rouge] un bloc de sélection de filtres dans lequel nous sélectionnons un espace de noms [Rose] ici chaos-engineering{USER_ID} et un service [Cyan] de l'application Voyage
 * [Bleu] Bloc A toutes les métriques relatives à l'espace de noms sur lequel l'application est déployée
-* [Yellow] Bloc B toutes les métriques relatives à un service spécifié
+* [Jaune] Bloc B toutes les métriques relatives à un service spécifié
 
 image::dashboard-explained.png[Grafana - Home,900]
 
@@ -364,13 +364,13 @@ Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER
 
 image::grafana-block-A.png[Grafana - Home,900]
 
-* [Red] Global Request Volume => le nombre total de requêtes
-* [Yellow] Global Success Rate => Un ratio cible de requêtes réussies sur le nombre total de requêtes .
-* [Blue] 4xx et 5xx => Total des requêtes en erreur HTTP 4xx et 5xx
+* [Rouge] Global Request Volume => le nombre total de requêtes
+* [Jaune] Global Success Rate => Un ratio cible de requêtes réussies sur le nombre total de requêtes .
+* [Bleu] 4xx et 5xx => Total des requêtes en erreur HTTP 4xx et 5xx
 * [Cyan] liste de tous les noms de services disponibles dans l'espace de noms chaos-engineering{USER_ID}
-* [Pink] Nombre de requêtes par services
-* [Brown] Latence par service
-* [Green] Succès des requêtes par services => Ratio de requêtes réussies associées au service
+* [Rose] Nombre de requêtes par services
+* [Brun] Latence par service
+* [Vert] Succès des requêtes par services => Ratio de requêtes réussies associées au service
 
 
 
@@ -378,10 +378,10 @@ Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous po
 
 image::grafana-block-B.png[Grafana - Home,900]
 
-* [Brown]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
-* [Pink]  Taux de succès = pour identifier QUAND une erreur HTTP se produit dans l'appel de service
-* [Blue]  Valeur de latence pour le service
-* [Green] Durée de demande pour le service
+* [Brun]  Erreur Taux dans le service sélectionné = Rapport d'erreur associé au service sélectionné
+* [Rose]  Taux de succès = pour identifier QUAND une erreur HTTP se produit dans l'appel de service
+* [Bleu]  Valeur de latence pour le service
+* [Vert] Durée de demande pour le service
 
 
 [IMPORTANT]
