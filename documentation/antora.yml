@@ -3,5 +3,6 @@ title: Atelier d'ingénierie du chaos OpenShift
 version: "5.0"
 nav:
   - modules/ROOT/nav_fr.adoc
+  - modules/ROOT/nav.adoc
 
 start_page: ROOT:index_fr.adoc
