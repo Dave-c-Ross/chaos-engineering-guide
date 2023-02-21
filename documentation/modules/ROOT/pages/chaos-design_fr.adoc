@@ -11,7 +11,8 @@
 
 _2 MINUTES D'ENTRAÎNEMENT_
 
-==  Qu'est-ce que l'ingénierie du chaos ?
+
+== Qu'est-ce que l'ingénierie du chaos ?
 
 [sidebar]
 .Principes de l'ingénierie du chaos
@@ -36,44 +37,40 @@ image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * Que se passe-t-il si le CPU utilisé par **Service Y** est saturé ? et surtout, que signifie tout cela pour l'utilisateur ?
 
-Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaitement pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines **dettes noires** -- présentes.
+Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaite pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines **dettes noires** -- présentes.
 
-**L'ingénierie du système fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système sont exactes dans le monde réel.**
+**L'ingénierie du chaos fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système sont exactes dans le monde réel.**
 
 ==  Planifier une expérience Chaos
 
 **L'ingénierie du chaos** commence par poser la question :
-**« Savons-nous ce que le système pourrait faire dans ce cas ? »**
+*« Savons-nous ce que le système pourrait faire dans ce cas ? »*
 
 
 image::process-chaos.png[process-chaos, 800]
 
 Le processus général d'ingénierie du chaos ressemble à :
 
-1. **Définir une hypothèse stable :** Vous devez commencer par une idée de ce qui peut aller mal. Commencez par un échec à injecter et prédire un résultat pour quand il tourne en direct.
+1. **Définir une hypothèse stable:** Vous devez commencer par une idée de ce qui peut mal se passer. Commencez par un échec à injecter et prédire un résultat pour quand il s'exécute.
 
 2. **Confirmer l'état stable et simuler quelques événements du monde réel:** Effectuez des tests en utilisant des scénarios réels pour voir comment votre système se comporte dans des conditions de stress ou des circonstances particulières.
 
 3. **Confirmer à nouveau l'état stable:** Nous avons besoin de confirmer quels changements ont eu lieu, alors vérifier à nouveau nous donne des idées sur le comportement du système.
 
-4. **Collecter des métriques et observer les tableaux de bord:** Vous devez mesurer la durabilité et la disponibilité de votre système. Il est préférable d'utiliser les paramètres de performance clés qui correspondent à la réussite du client ou à l'utilisation. Nous voulons mesurer l'échec contre notre hypothèse en examinant des facteurs comme l'impact sur la latence ou les demandes par seconde.
+4. **Collecter des métriques et observer les tableaux de bord:** Vous devez mesurer la durabilité et la disponibilité de votre système. Il est préférable d'utiliser les paramètres de performance clés qui correspondent à la réussite du client ou à son utilisation. Nous voulons mesurer l'échec contre notre hypothèse en examinant des facteurs comme l'impact sur la latence ou les demandes par seconde.
 
 5. **Apporter des modifications et résoudre les problèmes:** Après avoir mené une expérience, vous devriez avoir une bonne idée de ce qui fonctionne et ce qui doit être modifié. Maintenant, nous pouvons identifier ce qui mènera à une panne, et nous savons exactement ce qui casse le système. Donc, allez le réparer et essayez à nouveau avec une nouvelle expérience.
-
 
 =======
 image::chaos-engineering-process.png[chaos-engineering-process, 600]
 =======
 
-Plus tard dans cet atelier nous utiliserons **Openshift Service Mesh** pour injecter des défaillances dans notre **Expérience** .
+Plus tard dans cet atelier nous utiliserons **Openshift Service Mesh** pour injecter des défaillances dans notre **expérience**.
 
 
 image::Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 
-Après la **boucle d'apprentissage de l'ingénierie du chaos** l'étape initiale est d'**explorer** le système cible, c'est-à-dire notre application, pour tenter de surfacer ou **découvrir** toutes les faiblesses. Les **expériences** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc[6. Expérience Chaos 2: Service non disponible]).**Kiali** et **Openshift Developer Console** (xref:chaos-explore_fr.adoc[3. Explorer l'application]) vous permettra d'**explorer** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics_fr.adoc[4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
+Après la **boucle d'apprentissage de l'ingénierie du chaos** l'étape initiale est d'**explorer** le système cible, c'est-à-dire notre application, pour tenter de **découvrir** toutes les faiblesses. Les **expériences** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc[6. Expérience Chaos 2: Service non disponible]).**Kiali** et **Openshift Developer Console** (xref:chaos-explore_fr.adoc[3. Explorer l'application]) vous permettra d'**explorer** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics_fr.adoc[4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
 
-Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc[6. Expérience de Chaos 2: Service indisponible]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage en génie et après **l'analyse** vous allez **améliorer** et **valider** la correction faite.
-
-
-.
+Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency_fr.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error_fr.adoc[6. Expérience de Chaos 2: Service indisponible]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage du chaos, une fois **l'analyse** terminé, vous allez **améliorer** et **valider** la correction faite.
