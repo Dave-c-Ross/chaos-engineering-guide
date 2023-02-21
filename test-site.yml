@@ -25,6 +25,7 @@ asciidoc:
   attributes:
     release-version: master
     page-pagination: true
+    page-toctitle: Contenu
   extensions:
     - ./lib/tab-block.js
     - ./lib/remote-include-processor.js
