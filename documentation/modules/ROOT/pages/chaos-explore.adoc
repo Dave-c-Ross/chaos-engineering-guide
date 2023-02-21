@@ -6,25 +6,25 @@
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Explore the Application
+= Explore la demande
 
-_10 MINUTE PRACTICE_
+_10 MINUTES D'ENTRAÎNEMENT_
 
 image::explore-discover.png[explore-discover, 800]
 
-== What is OpenShift Service Mesh?
+== Qu'est-ce que OpenShift Service Mesh?
 
 [sidebar]
 .OpenShift Service Mesh
 ****
 
-**OpenShift Service Mesh** is also a service available on top of OpenShift.
+**OpenShift Service Mesh** est également un service disponible sur OpenShift.
 
-As applications evolve into collections of decentralized services, managing communications and security between those services becomes more difficult. 
+Au fur et à mesure que les applications évoluent vers des ensembles de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
 
-**Red Hat OpenShift Service Mesh** is a service that provides behavioral insight and operational control over the Service Mesh, providing a uniform way to connect, secure, and monitor microservice applications.
+**Red Hat OpenShift Service Mesh** est un service qui fournit des informations comportementales et un contrôle opérationnel sur Service Mesh, offrant une manière uniforme de connecter, sécuriser et surveiller les applications de microservices.
 
-What’s in it?
+Qu'est-ce qu'il y a là dedans ?
 
 [tabs]
 ====
@@ -33,62 +33,62 @@ Service Mesh::
 --
 image::istio-logo.png[Istio, 200]
 
-**Istio** is an open-source project for integrating and managing traffic flow across services. It works in concert with an underlying cluster manager (like Kubernetes). Centralized components, sidecar proxies, and node agents work together to create the data and control planes over a distributed application.
+**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les contrôleurs sur une application distribuée.
 --
 
-Observability::
+Observabilité::
 +
 --
 image::kiali-logo.png[Kiali, 200]
 
-Observability helps users see communication pathways between services, how they’re being managed, and how traffic is flowing in near-real time for easier management and troubleshooting. 
+L'observabilité aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule en temps quasi réel pour une gestion et un dépannage plus faciles.
 
-OpenShift Service Mesh uses **Kiali**, an open source project, to view configuration, monitor traffic, and analyze traces.
+OpenShift Service Mesh utilise **Kiali**, un projet open source, pour afficher la configuration, surveiller le trafic et analyser les traces.
 --
 
-Monitoring::
+Surveillance::
 +
 --
 image:grafana-logo.png[Grafana, 200]
 image:prometheus-logo.png[Prometheus, 200]
 
-OpenShift Service Mesh uses **Grafana** and **Prometheus** to provide out of the box metrics and monitoring for all services.
+OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques et la surveillance pour tous les services.
 --
 
 Tracing::
 +
 --
 image:jaeger-logo.png[Istio, 200]
-image:elastic-search-logo-color-horizontal.png[Elastic Search, 200]
+image:elastic-search-logo-color-horizontal.png[Elastic Recherche, 200]
 
-Tracing allows you to track a single request as it makes its way between different services - or even inside a service - providing insight into the entire request process from start to finish. 
-OpenShift Service Mesh uses **Jaeger**, an open, distributed tracing system and **Elasticsearch**, a distributed, free and open search and analytics engine to capture distributed traces providing a “per request” view  for isolating bottlenecks between services.
+Le traçage vous permet de suivre une seule demande au fur et à mesure de son cheminement entre différents services - ou même à l'intérieur d'un service - offrant un aperçu de l'ensemble du processus de demande du début à la fin.
+OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et distribué et **Elasticsearch**, un moteur de recherche et d'analyse distribué, gratuit et ouvert pour capturer les traces distribuées fournissant une vue « par demande » pour isoler les goulots d'étranglement entre les services.
 --
 ====
 
 ****
 
-== Observability with Kiali
+==  Observabilité avec Kiali
 
-**Kiali** provides an interactive graph view of your namespace in real time, being able to display the interactions at several levels (applications, versions, workloads), with contextual information and charts on the selected graph node or edge.
+**Kiali** fournit une vue graphique interactive de votre espace de noms en temps réel, pouvant afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
 
-`*Click on the 'Kiali' button below*`
+`*Cliquez sur le bouton 'Kiali' ci-dessous*`
 
 [link={KIALI_URL}]
 [window="_blank"]
 [role='params-link']
 image::kiali-button.png[Kiali - Button, 300]
 
-Then, `*log in with OpenShift as user{USER_ID}/{OPENSHIFT_PASSWORD}'*`
+Puis, `*connectez-vous avec OpenShift comme user{USER_ID}/{OPENSHIFT_PASSWORD} '*`
 
 image::kiali-login.png[Kiali- Log In,300]
 
-Select the  **'Graph' view**, from the side menu bar and `*enter the following configuration*`:
+Sélectionnez la vue **'Graph'**, depuis la barre de menus latérales et `*saisissez la configuration suivante*`:
 
 
 image::kiali-graph.png[Kiali- Graph,900]
-The outcome is a graph with all the services, connected by the requests going through them. 
-You can see how the services interact with each other. 
+Le résultat est un graphique avec tous les services, connectés par les demandes qui les traversent.
+Vous pouvez voir comment les services interagissent entre eux.
 
 
 .Graph Settings
@@ -116,78 +116,79 @@ You can see how the services interact with each other.
 
 
 
-== Understand the Application
 
-Before continuing we will describe the application used in this workshop.
+==  Comprendre l'application
 
-This demo application deploys several services into 1 namespace.
+Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
+
+Cette application de démonstration déploie plusieurs services dans 1 espace de nom.
 
 * **'chaos-engineering{USER_ID}'** namespace
 
-Inside the **'chaos-engineering{USER_ID}' namespace** we see 3 parts 
+A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parties
 
 * Travel-portal
 * Travel-agency
-* Travel-control 
+* Travel-control
 
 image::Application-travel-description.png[Application Travel Description- Graph,900]
 
-The Travels Demo application simulates two business domains:
+L'application Travels Demo simule deux domaines d'activité :
 
 === Travel Portal
 
-In a first part called **travel-portal** there will be deployed several travel shops, where users can search for and book flights, hotels, cars or insurance.
+Dans une première partie appelée **travel-portal** seront déployés plusieurs travel shops, où les utilisateurs pourront rechercher et réserver des vols, des hôtels, des voitures ou des assurances.
 
-The shop applications can behave differently based on request characteristics like channel (web or mobile) or user (new or existing).
+Les applications de la boutique peuvent se comporter différemment en fonction des caractéristiques de la demande comme le canal (web ou mobile) ou l'utilisateur (nouveau ou existant).
 
-These workloads may generate different types of traffic to imitate different real scenarios.
+Ces charges de travail peuvent générer différents types de trafic pour imiter différents scénarios réels.
 
-All the portals consume a service called travels.
+Tous les portails consomment un service appelé voyages.
 
 === Travel Agency
 
-A second part called **travel-agency** will host a set of services created to provide quotes for travel.
+Une deuxième partie appelée **agence-de-voyage** hébergera un ensemble de services créés pour fournir des devis de voyage.
 
-A main travels service will be the business entry point for the travel agency. It receives a destination city and a user as parameters and it calculates all elements that compose a travel budget: airfare, lodging, car reservation and travel insurance.
+Un service de voyages principal sera le point d'entrée commercial de l'agence de voyages. Il reçoit en paramètres une ville de destination et un utilisateur et calcule tous les éléments qui composent un budget voyage : billet d'avion, hébergement, réservation de voiture et assurance voyage.
 
-Each service can provide an independent quote and the travels service must then aggregate them into a single response.
+Chaque service peut fournir un devis indépendant et le service voyages doit ensuite les agréger en une seule réponse.
 
-Additionally, some users, like registered users, can have access to special discounts, managed as well by an external service.
+De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des remises spéciales, également gérées par un service externe.
 
-Service relations between services of the applications can be described in the following diagram:
+Les relations de service entre les services des applications peuvent être décrites dans le schéma suivant:
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
-=== Travel Portal and Travel Agency flow
+=== Flux du portail de voyage et de l'agence de voyage
 
-A typical flow consists of the following steps:
+Un flux typique se compose des étapes suivantes:
 
-. A portal queries the travels service for available destinations.
-. Travels service queries the available hotels and returns to the portal shop.
-. A user selects a destination and a type of travel, which may include a flight and/or a car, hotel and insurance.
-. Cars, Hotels and Flights may have available discounts depending on user type.
+. Un portail interroge le service voyages pour les destinations disponibles.
+. Le service Voyages interroge les hôtels disponibles et revient à la boutique du portail.
+. Un utilisateur sélectionne une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, un hôtel et une assurance.
+. Les voitures, les hôtels et les vols peuvent bénéficier de réductions en fonction du type d'utilisateur.
 
 === Travel Control
 
-The **travel-control**  runs a **business dashboard** with two key features:
+Le **travel-control** exécute un **tableau de bord d'entreprise** avec deux fonctionnalités clés:
 
-* Allow setting changes for every travel shop simulator (traffic ratio, device, user and type of travel).
+* Autoriser les changements de paramètres pour chaque simulateur de magasin de voyage (taux de trafic, appareil, utilisateur et type de voyage).
 
-* Provide a **business** view of the total requests generated from the **travel-control** service to the **travel-agency** services, organized by business criteria as grouped per shop, per type of traffic and per city.
+* Fournir une vue **commerciale** de l'ensemble des demandes générées par le service **travel-control** vers les services **agence de voyage**, organisées par critères commerciaux regroupés par magasin, par type de trafic et par ville.
 
-== Access the Application
+==  Accès à l'application
 
-To access to the dashboard (UI) of the application, we will need to create a specific Istio Ingress component.
+Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'control' service > 'Actions' > 'Request Routing'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **Services**, `*cliquez sur le service 'control' > 'Actions' > 'Request Routing'*`
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-`*Click on 'Add Rule' button*` to redirect all the ingress traffic to the 'control' service*`:
+`*Cliquez sur le bouton 'Add Rule'* pour rediriger tout le trafic d'entrée vers le service « control »*`:
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
-Then `*click on 'Show Advanced Options' and entering the following information*`:
+Puis `*cliquez sur 'Afficher les options avancées' et saisissez les informations suivantes*`:
 
 .Gateways Settings
 [%header,cols=3*]
@@ -208,6 +209,6 @@ Then `*click on 'Show Advanced Options' and entering the following information*`
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Finally, `*click on the 'Create' button*`. You can now access the Travel Control Dashboard using the following URL, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
+Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

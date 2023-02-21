@@ -7,20 +7,18 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 1: Injecting Timeout
-
-_XX MINUTE PRACTICE_
+=  Chaos Experiment 1: Injecter un délai d'attente
 
 == TODO
 
-To minimize the latency impact, you can use the **timeout pattern** which is probably the most common resilience pattern for distributed systems.
-The goal is to fail a request after a certain period of time to avoid code and resources locking when the service is waiting for a response that takes too long or that might never arrive.
+Pour minimiser l'impact de la latence, vous pouvez utiliser le **modèle de délai d'attente** qui est probablement le modèle de résilience le plus courant pour les systèmes distribués.
+L'objectif est de faire échouer une requête après un certain laps de temps pour éviter le verrouillage du code et des ressources lorsque le service attend une réponse qui prend trop de temps ou qui pourrait ne jamais arriver.
 
-In the {KIALI_URL}[Kiali Console^], from the **'Services' view**, `*click on the 'travels' > 'Actions' > 'Request Timeouts'*`
+Dans la {KIALI_URL}[Console Kiali^], de la vue **'Services**, `*cliquez sur les 'travels' > 'Actions' > 'Request Timeouts'*`
 
 image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
-`*Add HTTP Timeout by entering the following settings:*`
+`*Ajouter HTTP Timeout en entrant les paramètres suivants:*`
 
 .HTTP Timeout Settings
 [%header,cols=3*]
@@ -41,27 +39,27 @@ image::kiali-request-timeout-actions.png[Kiali - Request Timeout Actions,900]
 
 image::kiali-configure-timeout.png[Kiali - Configure Timeout,400]
 
-In {GRAFANA_URL}[Grafana^], from the **Chaos Engineering Dashboard**, `*scroll down and see the latency metrics*`
+Dans {GRAFANA_URL}[Grafana^], à partir du tableau de bord **, `*faire défiler et voir les métriques de latence*`
 
-After a while, you can see the impact of our configuration. Indeed, the latency on **Travels** service has reduced and
-the latency metrics become green again.
+Après un certain temps, vous pouvez voir l'impact de notre configuration. En effet, la latence du service **Voyages** a diminué et
+les métriques de latence deviennent vertes à nouveau.
 
 image::grafana-timeout-details-1.png[Grafana - Timeout Details,900]
 
 image::grafana-timeout-details-2.png[Grafana - Timeout Details,900]
 
-The latency issues have been fixed but the timeout pattern introduces errors for the requests which exceeds the threshold.
-`*Scroll up and see the error rate metrics*`
+Les problèmes de latence ont été corrigés, mais le modèle de délai d'attente introduit des erreurs pour les requêtes qui dépassent le seuil.
+`*Faire défiler et voir les paramètres du taux d'erreur*`
 
 image::grafana-timeout-error.png[Grafana - Timeout Error,900]
 
 == TODO
 
-You have implemented timeouts for the travels service. 
-Let's implementing a strategy of retry to mitigate these transient errors.
+Vous avez mis en place des délais d'attente pour le service de voyages.
+Mettons en œuvre une stratégie de nouvelle tentative pour atténuer ces erreurs transitoires.
 
-In the {KIALI_URL}[Kiali Console^], from the **'Services' view**, 
-`*click on the 'travels' > 'Actions' > 'Request Timeouts' and add HTTP Retry by entering the following settings:*`
+Dans la {KIALI_URL}[Kiali Console^], depuis la vue **'Services'**,
+`*cliquez sur 'travels' > 'Actions' > 'Request Timeouts' et ajoutez HTTP Retry en saisissant les paramètres suivants:*`
 
 .HTTP Retry Settings
 [%header,cols=3*]
@@ -86,5 +84,4 @@ In the {KIALI_URL}[Kiali Console^], from the **'Services' view**,
 
 image::kiali-configure-retry.png[Kiali - Configure Retry,400]
 
-`*Back to {GRAFANA_URL}[Grafana^]*`, you can tell the retry pattern reduces the error rates without impacting the latency.
-
+`*De retour à {GRAFANA_URL}[Grafana^]*`, vous pouvez dire que le modèle de nouvelle tentative réduit les taux d'erreur sans impact sur la latence.

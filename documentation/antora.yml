@@ -1,8 +1,7 @@
 name: chaos-engineering
-title: Atelier d'ingénierie du chaos OpenShift
-version: "5.0"
+title: "Chaos Engineering Workshop"
+version: "5.0-fr"
 nav:
-  - modules/ROOT/nav_fr.adoc
   - modules/ROOT/nav.adoc
 
-start_page: ROOT:index_fr.adoc
+start_page: ROOT:index.adoc
