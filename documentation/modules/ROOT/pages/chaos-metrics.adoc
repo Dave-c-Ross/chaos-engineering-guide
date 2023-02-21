@@ -16,7 +16,7 @@ _20 MINUTE PRACTICE_
 
 As described in the **Chaos Engineering process** we are currently in a **Steady-state hypothesis**. It means we have to set **metrics** to indicate that the system is working in an expected way from a business perspective, and within a given set of tolerances.
 
-**Steady state** means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its **SLOs** ( **S**ervice **L**evel **O**bjective). 
+**Steady state** means that you can measure that the system is working in an expected way. In this case, that normal behavior is that the system will meet its **SLOs** (**S**ervice **L**evel **O**bjective).
 
 Instead of asking the question: is the service up or down?
 
@@ -161,7 +161,7 @@ At the end, you should have the following expression in the the 'Metrics' field 
 
 image::grafana-number-total-promql.png[Grafana - Number Total Request PromQL,900]
 
-As result, you should be a time graph similar to the following one:
+As result, you should have a time graph similar to the following one:
 
 image::grafana-number-total-graph.png[Grafana - Home,700]
 
@@ -255,7 +255,7 @@ sum(rate(istio_requests_total{reporter="source", namespace="chaos-engineering{US
 
 [TIP]
 ====
-**Global Success Rate**  is a ratio betwen the number of successfull request and the number of http requests.
+**Global Success Rate**  is a ratio between the number of successfull request and the number of http requests.
 ====
 
 
