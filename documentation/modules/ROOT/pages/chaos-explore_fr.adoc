@@ -8,7 +8,7 @@
 
 = Explore la demande
 
-_10 MINUTE PRACTICE_
+_10 MINUTES D'ENTRAÎNEMENT_
 
 image::explore-discover.png[explore-discover, 800]
 
@@ -16,15 +16,15 @@ image::explore-discover.png[explore-discover, 800]
 
 [sidebar]
 .OpenShift Service Mesh
-♪♪
+****
 
 **OpenShift Service Mesh** est également un service disponible sur OpenShift.
 
-À mesure que les applications deviennent des collections de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
+Au fur et à mesure que les applications évoluent vers des ensembles de services décentralisés, la gestion des communications et de la sécurité entre ces services devient plus difficile.
 
-**Red Hat OpenShift Service Mesh** est un service qui fournit un aperçu comportemental et un contrôle opérationnel sur le Service Mesh, fournissant un moyen uniforme de connecter, de sécuriser et de surveiller les applications microservice.
+**Red Hat OpenShift Service Mesh** est un service qui fournit des informations comportementales et un contrôle opérationnel sur Service Mesh, offrant une manière uniforme de connecter, sécuriser et surveiller les applications de microservices.
 
-Qu’y a-t-il ?
+Qu'est-ce qu'il y a là dedans ?
 
 [tabs]
 ====
@@ -33,7 +33,7 @@ Service Mesh::
 --
 image::istio-logo.png[Istio, 200]
 
-**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les plans de contrôle sur une application distribuée.
+**Istio** est un projet open-source pour l'intégration et la gestion des flux de trafic entre les services. Il travaille en concert avec un gestionnaire de cluster sous-jacent (comme Kubernetes). Les composants centralisés, les proxies sidecar et les agents node travaillent ensemble pour créer les données et les contrôleurs sur une application distribuée.
 --
 
 Observabilité::
@@ -41,9 +41,9 @@ Observabilité::
 --
 image::kiali-logo.png[Kiali, 200]
 
-L’observation aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule dans un temps quasi réel pour faciliter la gestion et le dépannage.
+L'observabilité aide les utilisateurs à voir les voies de communication entre les services, comment ils sont gérés et comment le trafic circule en temps quasi réel pour une gestion et un dépannage plus faciles.
 
-OpenShift Service Mesh utilise **Kiali**, un projet open source, pour visualiser la configuration, surveiller le trafic et analyser les traces.
+OpenShift Service Mesh utilise **Kiali**, un projet open source, pour afficher la configuration, surveiller le trafic et analyser les traces.
 --
 
 Surveillance::
@@ -52,25 +52,25 @@ Surveillance::
 image:grafana-logo.png[Grafana, 200]
 image:prometheus-logo.png[Prometheus, 200]
 
-OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques de boîte et de surveillance pour tous les services.
+OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques et la surveillance pour tous les services.
 --
 
-<MISSING <MISSING TTKN12>>
+Tracing::
 +
 --
 image:jaeger-logo.png[Istio, 200]
 image:elastic-search-logo-color-horizontal.png[Elastic Recherche, 200]
 
-Tracing vous permet de suivre une seule demande car elle fait son chemin entre différents services - ou même à l'intérieur d'un service - fournissant un aperçu de l'ensemble du processus de demande du début à la fin.
-OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et distribué et **Elasticsearch**, un moteur de recherche et d'analyse distribué, libre et ouvert pour capturer des traces distribuées offrant une vue «par demande» pour isoler les goulets d'étranglement entre les services.
+Le traçage vous permet de suivre une seule demande au fur et à mesure de son cheminement entre différents services - ou même à l'intérieur d'un service - offrant un aperçu de l'ensemble du processus de demande du début à la fin.
+OpenShift Service Mesh utilise **Jaeger**, un système de traçage ouvert et distribué et **Elasticsearch**, un moteur de recherche et d'analyse distribué, gratuit et ouvert pour capturer les traces distribuées fournissant une vue « par demande » pour isoler les goulots d'étranglement entre les services.
 --
 ====
 
-♪♪
+****
 
 ==  Observabilité avec Kiali
 
-**Kiali** offre une vue graphique interactive de votre espace de nom en temps réel, en mesure d'afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
+**Kiali** fournit une vue graphique interactive de votre espace de noms en temps réel, pouvant afficher les interactions à plusieurs niveaux (applications, versions, charges de travail), avec des informations contextuelles et des graphiques sur le nœud ou le bord du graphique sélectionné.
 
 `*Cliquez sur le bouton 'Kiali' ci-dessous*`
 
@@ -91,27 +91,28 @@ Le résultat est un graphique avec tous les services, connectés par les demande
 Vous pouvez voir comment les services interagissent entre eux.
 
 
-.Paramètres de graphique
+.Graph Settings
 [%header,cols=2*]
 |===
-|Paramètre
+|Parameter
 |Value
 
-|Namespace
+|Namespace 
 |**chaos-engineering{USER_ID}**
 
-Graphique de type |
-|**Graphique d'application vérifié**
+|Type Graph
+|**Versioned app graph**
 
-|Affichage
-|**'Response Time'** vérifié
+|Display
+|**'Response Time'** checked
 
-"Traffic Animation"
+**'Traffic Animation'** checked
 
 |Hide...
 |**service*=svc.cluster.local**
 
 |===
+
 
 
 
@@ -122,7 +123,7 @@ Avant de poursuivre, nous décrivons l'application utilisée dans cet atelier.
 
 Cette application de démonstration déploie plusieurs services dans 1 espace de nom.
 
-***'chaos-engineering{USER_ID}'** namespace
+* **'chaos-engineering{USER_ID}'** namespace
 
 A l'intérieur du **'chaos-engineering{USER_ID}' namespace** nous voyons 3 parties
 
@@ -136,9 +137,9 @@ L'application Travels Demo simule deux domaines d'activité :
 
 === Travel Portal
 
-Dans une première partie appelée **travel-portal** il y aura déployé plusieurs magasins de voyage, où les utilisateurs peuvent chercher et réserver des vols, hôtels, voitures ou assurances.
+Dans une première partie appelée **travel-portal** seront déployés plusieurs travel shops, où les utilisateurs pourront rechercher et réserver des vols, des hôtels, des voitures ou des assurances.
 
-Les applications de magasin peuvent se comporter différemment selon les caractéristiques de la demande comme le canal (web ou mobile) ou l'utilisateur (nouveau ou existant).
+Les applications de la boutique peuvent se comporter différemment en fonction des caractéristiques de la demande comme le canal (web ou mobile) ou l'utilisateur (nouveau ou existant).
 
 Ces charges de travail peuvent générer différents types de trafic pour imiter différents scénarios réels.
 
@@ -146,57 +147,57 @@ Tous les portails consomment un service appelé voyages.
 
 === Travel Agency
 
-Une deuxième partie, **travel-agency**, accueillera un ensemble de services créés pour fournir des devis de voyage.
+Une deuxième partie appelée **agence-de-voyage** hébergera un ensemble de services créés pour fournir des devis de voyage.
 
-Un service de voyage principal sera le point d'entrée pour l'agence de voyage. Il reçoit une ville de destination et un utilisateur comme paramètres et calcule tous les éléments qui composent un budget de voyage: airfare, logement, réservation de voiture et assurance voyage.
+Un service de voyages principal sera le point d'entrée commercial de l'agence de voyages. Il reçoit en paramètres une ville de destination et un utilisateur et calcule tous les éléments qui composent un budget voyage : billet d'avion, hébergement, réservation de voiture et assurance voyage.
 
-Chaque service peut fournir une citation indépendante et le service de voyages doit ensuite les regrouper en une seule réponse.
+Chaque service peut fournir un devis indépendant et le service voyages doit ensuite les agréger en une seule réponse.
 
-De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des réductions spéciales, gérées aussi bien par un service externe.
+De plus, certains utilisateurs, comme les utilisateurs enregistrés, peuvent avoir accès à des remises spéciales, également gérées par un service externe.
 
-Les relations de service entre les services des applications peuvent être décrites dans le diagramme suivant:
+Les relations de service entre les services des applications peuvent être décrites dans le schéma suivant:
 
 image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed by Argo CD , 800]
 
-=== Flux de portails de voyage et d'agence de voyage
+=== Flux du portail de voyage et de l'agence de voyage
 
 Un flux typique se compose des étapes suivantes:
 
-.Un portail demande le service de voyages pour les destinations disponibles.
-.Voyages service demande les hôtels disponibles et retourne à la boutique portail.
-.Un utilisateur choisit une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, hôtel et assurance.
-.Voitures, Hôtels et Vols peuvent avoir des réductions disponibles selon le type d'utilisateur.
+. Un portail interroge le service voyages pour les destinations disponibles.
+. Le service Voyages interroge les hôtels disponibles et revient à la boutique du portail.
+. Un utilisateur sélectionne une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, un hôtel et une assurance.
+. Les voitures, les hôtels et les vols peuvent bénéficier de réductions en fonction du type d'utilisateur.
 
-=== Commande de route
+=== Travel Control
 
-Le **travel-control** gère un tableau de bord **-business** avec deux caractéristiques clés:
+Le **travel-control** exécute un **tableau de bord d'entreprise** avec deux fonctionnalités clés:
 
-* Permettre des changements pour chaque simulateur de magasin de voyage (ratio de trafic, appareil, utilisateur et type de voyage).
+* Autoriser les changements de paramètres pour chaque simulateur de magasin de voyage (taux de trafic, appareil, utilisateur et type de voyage).
 
-* Fournir une vue **-business** sur le total des demandes générées du service **-contrôle** aux services **travel-agency**, organisés selon des critères d'affaires groupés par magasin, par type de trafic et par ville.
+* Fournir une vue **commerciale** de l'ensemble des demandes générées par le service **travel-control** vers les services **agence de voyage**, organisées par critères commerciaux regroupés par magasin, par type de trafic et par ville.
 
-==  Accès à la demande
+==  Accès à l'application
 
 Pour accéder au tableau de bord (UI) de l'application, nous devons créer un composant Istio Ingress spécifique.
 
-Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'contrôle' > Actions' > '*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **Services**, `*cliquez sur le service 'control' > 'Actions' > 'Request Routing'*`
 
 image::kiali-control-request-routing.png[Kiali - Control Request Routing , 800]
 
-`*Cliquez sur le bouton « Ajouter la règle »* pour rediriger tout le trafic d'entrée vers le service « contrôle »*`:
+`*Cliquez sur le bouton 'Add Rule'* pour rediriger tout le trafic d'entrée vers le service « control »*`:
 
 image::kiali-control-add-rule.png[Kiali - Control Add Rule , 500]
 
 Puis `*cliquez sur 'Afficher les options avancées' et saisissez les informations suivantes*`:
 
-.Réglages Gateways
+.Gateways Settings
 [%header,cols=3*]
 |===
-|Paramètre
+|Parameter
 |Value
 |Description
 
-| Ajouter Gateway
+|Add Gateway 
 |**Enabled**
 |
 
@@ -208,6 +209,6 @@ Puis `*cliquez sur 'Afficher les options avancées' et saisissez les information
 
 image::kiali-control-create-ingress.png[Kiali - Control Create Ingress , 500]
 
-Enfin, `*cliquez sur le bouton 'Créer'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
+Enfin, `*cliquez sur le bouton 'Create'*`. Vous pouvez maintenant accéder au tableau de bord du contrôle des voyages en utilisant l'URL suivante, http://control-chaos-engineering{USER_ID}.{APPS_HOSTNAME_SUFFIX}[^, role='params-link'].
 
 image::travels-dashboard.png[travels-dashboard - Business Dashboard , 800]

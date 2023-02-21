@@ -10,13 +10,13 @@ include::_attributes_fr.adoc[]
 == Explication de l'atelier
 **Résumé** :
 
-La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.
+La construction de systèmes à grande échelle et distribués change le jeu pour l'ingénierie logicielle moderne. Comment nos applications se comportent-elles face à l'échec ? C'est le défi crucial que nous devons résoudre car les échecs sont inévitables.
 
-Nous devons identifier les faiblesses de nos systèmes avant qu'ils ne se produisent dans la production.
+Nous devons identifier les faiblesses de nos systèmes avant qu'ils ne se produisent dans une environement de production.
 
 Le but avec Chaos Engineering n'est pas de construire des outils pour arrêter les problèmes ou de trouver des vulnérabilités. Pour nous c'est de pousser vers une culture de résilience à l'imprévu.
 
-Apportez votre ordinateur portable et rejoignez-nous pour faire votre **Expérience de Chaos** pour voir comment elle résiste aux conditions turbulentes dans la production et être préparée quand elle se produit.
+Apportez votre ordinateur portable et rejoignez-nous pour faire votre **Expérience de Chaos**, pour voir comment elle résiste aux conditions turbulentes dans la production et être préparée quand elle se produit.
 
 Dans cet atelier pratique, les participants se familiariseront avec le concept de **Chaos Engineering** et apprendront comment le mettre en pratique en utilisant des capacités avancées de OpenShift comme OpenShift Service Mesh. En guise de décollage, les participants pourront :
 
@@ -38,3 +38,4 @@ Nous utilisons sur **Openshift Cluster 4.7** fourni sur le système RHPDS dans l
 * https://www.openshift.com/learn/topics/service-mesh[Openshift Service Mesh]
 * https://www.openshift.com/blog/announcing-openshift-gitops[Openshift GitOps]
 
+OVERLAY 5.0

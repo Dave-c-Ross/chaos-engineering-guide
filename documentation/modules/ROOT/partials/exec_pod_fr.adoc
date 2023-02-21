@@ -1,4 +1,4 @@
-Vérifiez que la gousse est en marche:
+Vérifiez que le cluster est en marche:
 
 [.lines_space]
 [.console-input]
@@ -14,7 +14,7 @@ NAME                        READY   STATUS    RESTARTS   AGE
 {podname}   1/1     Running   0          5s
 ----
 
-Alors, allons dans le jeu pour exécuter quelques commandes:
+Alors, exécutons quelques commandes:
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
@@ -22,4 +22,4 @@ Alors, allons dans le jeu pour exécuter quelques commandes:
 kubectl exec -ti {podname} /bin/bash
 ----
 
-NOTE: Changez le nom de la gousse avec votre nom de gousse.
+NOTE: Changez le nom dcu cluster avec votre nom de cluster.
