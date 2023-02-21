@@ -9,18 +9,18 @@
 
 = FAQ
 
-Additionnal contents to go further :
+Contenu supplémentaire pour aller plus loin :
 
-== Training and Videos
+== Formation et vidéos
 * **Openshift Gitops** https://learn.openshift.com/gitops
-* **What's new in OpenShift Pipelines and OpenShift GitOps - Jaafar Chraibi/Christian Hernandez** https://www.youtube.com/watch?v=YvtRXFzRHeI[YouTube Video]
-* **Why Service Mesh?** https://www.youtube.com/watch?v=F_t3WDhMuwU[YouTube Video]
-* **Learn Openshift Service Mesh** https://learn.openshift.com/servicemesh
-* **Monitoring Services like an SRE in OpenShift ServiceMesh** https://www.youtube.com/watch?v=Gu-g_yg0Q1g[YouTube Video]
-* **Kiali Tutorial** https://kiali.io/documentation/latest/tutorial/
+* **Qu'est-ce qu'il y a de nouveau dans OpenShift Pipelines et OpenShift GitOps - Jaafar Chraibi/Christian Hernandez** https://www.youtube.com/watch?v=YvtRXFzRHeI[Video YouTube]
+* **Pourquoi le Service Mesh** ? https://www.youtube.com/watch?v=F_t3WDhMuwU[Video YouTube]
+* **Apprendre Openshift Service Mesh** https://learn.openshift.com/servicemesh
+* **Surveillance des services comme un SRE dans OpenShift ServiceMesh** https://www.youtube.com/watch?v=Gu-g_yg0Q1g[Video YouTube]
+* **Tutoriel de Kali** https://kiali.io/documentation/latest/tutorial/
 
-== Books 
-* https://developers.redhat.com/books/introducing-istio-service-mesh-microservices?extIdCarryOver=true&sc_cid=701f2000001OH7iAAG[Introducing Istio services Mesh for Microservices]
-* https://www.oreilly.com/library/view/chaos-engineering/9781492043850/[Chaos Engineering]
-* https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/[Learning Chaos Engineering]
-* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/[Implementing Service Level Objectives]
+== Livres
+* https://developers.redhat.com/books/introducing-istio-service-mesh-microservices?extIdCarryOver=true&sc_cid=701f2000001OH7iAAG[Présentation des services Istio Mesh pour les microservices]
+* https://www.oreilly.com/library/view/chaos-engineering/9781492043850/[Ingénierie du chaos]
+* https://www.oreilly.com/library/view/learning-chaos-engineering/9781492050995/[Apprendre l'ingénierie du chaos]
+* https://www.oreilly.com/library/view/implementing-service-level/9781492076803/[Mise en œuvre des objectifs de niveau de service]

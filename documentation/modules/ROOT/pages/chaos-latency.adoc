@@ -8,19 +8,19 @@
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GITOPS_URL: https://argocd-server-argocd.%APPS_HOSTNAME_SUFFIX%
 
-= Chaos Experiment 1: Network latency
+= Expérience de Chaos 1: Latence du réseau
 
-_30 MINUTE PRACTICE_
+_30 MINUTES DE PRATIQUE_
 
-In production, it is more common to have slow services than broken services. **Latency** measures the delay between an action and a response. For this first experiment, we will test the following hypothesis:
+En production, il est plus courant d'avoir des services lents que des services cassés. **Latence** mesure le délai entre une action et une réponse. Pour cette première expérience, nous allons tester l'hypothèse suivante:
 
-_**A small network latency should not impact the Service Level Objective (SLO) of the Travel Service**_
+_**Une petite latence de réseau ne devrait pas affecter l'objectif de niveau de service (SLO) du Service de voyage**_
 
-== Define the steady state
+== Définir l'état stable
 
 
-In the {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], you can analyze the different metrics and define the Steady State for our chaos experiment.
-First, `*select the following variables on the dashboard*`:
+Dans le {GRAFANA_URL}[Chaos Engineering Dashboard, role='params-link'], vous pouvez analyser les différentes métriques et définir le Steady State pour notre expérience du chaos.
+Tout d'abord, `*sélectionnez les variables suivantes sur le tableau de bord*`:
 
 .Dashboard Settings
 [%header,cols=3*]
@@ -41,17 +41,17 @@ First, `*select the following variables on the dashboard*`:
 
 image::grafana-chaos-selection.png[Grafana - Chaos Selection,400]
 
-From the **Namespace section**, you can tell that **99% of requests are successful and served within 50 ms**  
+Dans la section **Namespace**, vous pouvez dire que **99% des requêtes aboutissent et sont traitées dans les 50ms**
 
 image::grafana-steady-state-latency.png[Grafana - Steady State Latency,900]
 
-So we will define this SLO as "steady-state".
+Nous définirons donc ce SLO comme "stable-state".
 
-`*Click on 'Service Overview' > Edit*`
+`*Cliquez sur 'Aperçu du service' puis Edit*`
 
 image::grafana-edit-service-overview.png[Grafana - Edit Service Overview,900]
 
-Then, `*click on 'Visualization Settings' icon on the left hand sidebar, scroll down to find the 'P99 Latency (Value #D)' rule and enter the following information for Thresholds*`
+Puis, `*cliquez sur l'icône 'Visualization Settings' sur la barre latérale gauche, faites défiler vers le bas pour trouver la règle 'P99 Latency (Value #D)' et saisissez les informations suivantes pour Thresholds*`
 
 .P99 Latency Thresholds Settings
 [%header,cols=3*]
@@ -76,7 +76,7 @@ Then, `*click on 'Visualization Settings' icon on the left hand sidebar, scroll 
 
 image::grafana-p99-latency-threholds.png[Grafana - P99 Latency Threholds,700]
 
-`*Scroll down again and to find the 'Success Rate (Value #E)' rule and enter the following information for Thresholds*`
+`*Retourner à nouveau et trouver la règle "Success Rate (Value #E)" et entrer les informations suivantes pour Thresholds*`
 
 .Success Rate Thresholds Settings
 [%header,cols=3*]
@@ -101,25 +101,25 @@ image::grafana-p99-latency-threholds.png[Grafana - P99 Latency Threholds,700]
 
 image::grafana-success-rate-threholds.png[Grafana - Sucess Rate Threholds,700]
 
-Once done, you should have the following outcome (all green).
+Une fois terminé, vous devriez avoir le résultat suivant (tout vert).
 
 image::grafana-service-overview-configured.png[Grafana - Service Overview Configured,700]
 
-`*Click on the 'Disk' icon to save and go back to the Dashboard.*`
+`*Cliquez sur l'icône 'Disk' pour enregistrer et retourner au tableau de bord.*`
 
-== Run the Chaos experiment
+== Exécuter l'expérience Chaos
 
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Graph' view**, `*right-click on the 'discounts' service (triangle symbol) and select 'Details'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Graph'**, `*clic droit sur le service 'discounts' (le symbole triangle) et sélectionnez 'Details'*`
 
 image::kiali-right-click-service.png[Kiali - Right Click Service,600]
 
-You will be redirected to the Service Details page. 
+Vous serez redirigé vers la page Détails du service.
 
-`*Click on the 'Actions' > 'Fault Injection'*`
+`*Cliquez sur 'Actions' > 'Fault Injection'*`
 
 image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
-`*Add HTTP Delay by entering the following settings:*`
+`*Ajouter HTTP Delay en entrant les paramètres suivants:*`
 
 .HTTP Delay Settings
 [%header,cols=3*]
@@ -144,47 +144,47 @@ image::kiali-add-fault-injection.png[Kiali - Add Fault Injection,900]
 
 image::kiali-configure-latency.png[Kiali - Configure Latency,400]
 
-`*Click on the 'Update' button*`. 
+`*Cliquez sur le bouton « Mise à jour »*`.
 
-**5% of the traffic of the 'discounts' service has now 1 second of delay.**
+**5% du trafic du service des « comptes » a maintenant 1 seconde de retard. **
 
-== Analyze the Chaos outcome
+==  Analyser le résultat du Chaos
 
-Now let's see the impact of the application.
+Voyons maintenant l'impact sur l'application.
 
-In the {GRAFANA_URL}[Chaos Engineering Dashboard], you can see the result of the chaos experiment.
+Dans {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez voir le résultat de l'expérience de chaos.
 
 image::grafana-latency-fault-overview.png[Grafana - Latency Fault Overview,900]
 
-From the **'Service Overview'** panel or **'Request Duration'** for the 'travels' service, you can tell the following about the small network latency based on our hypothesis:
+Dans le panneau **'Service Overview'** ou **'Request Duration'** pour le service 'voyages', vous pouvez dire ce qui suit sur la petite latence du réseau en fonction de notre hypothèse:
 
-- there is no impact on the Success Rate of the overall requests (100%)
-- there is a huge impact on the performance of the application. 
+- il n'y a pas d'impact sur le taux de réussite des demandes globales (100%)
+- il y a un impact énorme sur la performance de l'application.
 
-Indeed, just 1 second of delay on 5% of the traffic of one dependant service induces **a latency propagation of ~2 seconds across the entire system**.
+En effet, seulement 1 seconde de retard sur 5% du trafic d'un service à charge induit **une propagation de latence de ~2 secondes dans l'ensemble du système**.
 
 image::grafana-latency-fault-details.png[Grafana - Latency Fault Details,900]
 
-In conclusion, you can tell **the application is not resilient to a small network latency**. To reduce or fix this phenomenon, you could configure the autoscaling or implement a cache mechanism across the different services of the applications.
+En conclusion, vous pouvez dire ** que l'application n'est pas résistante à une petite latence du réseau **. Pour réduire ou corriger ce phénomène, vous pouvez configurer l'autoscaling ou implémenter un mécanisme de cache sur les différents services des applications.
 
-== Improve the Resiliency
+== Améliorer la résilience
 
-To contain this latency propagation, you are going to apply the *Retry* pattern to all services calling the delayed 'discounts' services.
+Pour contenir cette propagation de latence, vous allez appliquer le pattern *Retry* à tous les services appelant les services 'discounts' retardés.
 
-Retries can improve the application resiliency against transcient problems such as  a temporarily overloaded service or network like we simulate in our experiment.
+Les nouvelles tentatives peuvent améliorer la résilience de l'application contre les problèmes transitoires tels qu'un service ou un réseau temporairement surchargé, comme nous le simulons dans notre expérience.
 
-Instead of failing directly or waiting too long, we could retry N number of times to get the desired output with the desired response time before considering as failed.
+Au lieu d'échouer directement ou d'attendre trop longtemps, nous pourrions réessayer N fois pour obtenir la sortie souhaitée avec le temps de réponse souhaité avant de considérer comme ayant échoué.
 
-`*Configure the Retry pattern for the following services*`
+`*Configurer le modèle de nouvelle tentative pour les services suivants*`
 
 [tabs]
 ====
-cars::
+Voitures::
 +
 --
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'cars' service > 'Actions' > 'Request Timeouts'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'cars' > Actions' >'Request Timeouts '*`
 
-`*Add HTTP Retry by entering the following settings:*`
+`*Ajouter HTTP Retry en entrant les paramètres suivants:*`
 
 .HTTP Retry Settings
 [%header,cols=3*]
@@ -209,15 +209,15 @@ In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' vi
 
 image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
-`*Click on the 'Update' button*`.
+`*Cliquez sur le bouton « Mise à jour »*`.
 --
 
-flights::
+Vols::
 +
 --
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'flights' service > 'Actions' > 'Request Timeouts'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'flights' > 'Actions' > 'Request Timeouts'*`
 
-`*Add HTTP Retry by entering the following settings:*`
+`*Ajouter HTTP Retry en entrant les paramètres suivants:*`
 
 .HTTP Retry Settings
 [%header,cols=3*]
@@ -242,15 +242,15 @@ In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' vi
 
 image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
-`*Click on the 'Update' button*`.
+`*Cliquez sur le bouton « Mise à jour »*`.
 --
 
-hotels::
+Hôtels::
 +
 --
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'hotels' service > 'Actions' > 'Request Timeouts'*`
+Dans le {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service 'hôtels' > 'Actions' > 'Request Timeouts'*`
 
-`*Add HTTP Retry by entering the following settings:*`
+`*Ajouter HTTP Retry en entrant les paramètres suivants:*`
 
 .HTTP Retry Settings
 [%header,cols=3*]
@@ -275,15 +275,15 @@ In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' vi
 
 image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
-`*Click on the 'Update' button*`.
+`*Cliquez sur le bouton « Mise à jour »*`.
 --
 
-insurances::
+Assurances::
 +
 --
-In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' view**, `*click on the 'insurances' service > 'Actions' > 'Request Timeouts'*`
+Dans la {KIALI_URL}[Kiali Console^, role='params-link'], de la vue **'Services**, `*cliquez sur le service d'assurances > 'Actions' > 'Request Timeouts'*`
 
-`*Add HTTP Retry by entering the following settings:*`
+`*Ajouter HTTP Retry en entrant les paramètres suivants:*`
 
 .HTTP Retry Settings
 [%header,cols=3*]
@@ -308,28 +308,28 @@ In the {KIALI_URL}[Kiali Console^, role='params-link'], from the **'Services' vi
 
 image::kiali-configure-latency-retry.png[Kiali - Configure Latency Retry,400]
 
-`*Click on the 'Update' button*`.
+`*Cliquez sur le bouton « Mise à jour »*`.
 --
 ====
 
-== Validate the Improvement
+==  Valider l'amélioration
 
-Back into the {GRAFANA_URL}[Chaos Engineering Dashboard], you can tell that we manage to contain the latency propagation by **not exceeding 100 ms in general** using the Retry pattern while the 'discounts' service still has the 1s latency issue.
+De retour dans le {GRAFANA_URL}[Chaos Engineering Dashboard], vous pouvez dire que nous parvenons à contenir la propagation de la latence en **ne dépassant pas 100ms en général** en utilisant le modèle de nouvelle tentative alors que le service "discounts" a toujours le problème de latence de 1s .
 
 image::grafana-latency-contained-overview.png[Grafana - Latency Contained Overview,900]
 
-You can see more detail on the 'Request Duration' panel for the 'travels' service
+Vous pouvez voir plus de détails sur le panneau 'Request Duration' pour le service 'travels'
 
 image::grafana-latency-contained-details.png[Grafana - Latency Contained Details,900]
 
-== Rollback the Chaos experiment
+== Retour arrière de l'expérience Chaos
 
-There is nothing more simple than rollbacking all configurations you have done during this lab with Argo CD.
+Il n'y a rien de plus simple que d'annuler toutes les configurations que vous avez effectuées au cours de ce laboratoire avec Argo CD.
 
-In {GITOPS_URL}[Argo CD^, role='params-link'], `*click on 'Sync > Synchronize'*`.
+Dans {GITOPS_URL}[Argo CD^, role='params-link'], `*cliquez sur 'Sync > Synchronize '*`.
 
 image::argocd-rollback-sync.png[Argo CD - Sync Application, 900]
 
-Finally, in the {GRAFANA_URL}[Chaos Engineering Dashboard], `*please check the application is back in the steady state*`.
+Enfin, dans le {GRAFANA_URL}[Chaos Engineering Dashboard], `*veuillez vérifier que l'application est de retour à l'état stable*`.
 
 image::grafana-steady-state.png[Grafana - Steady State,700]

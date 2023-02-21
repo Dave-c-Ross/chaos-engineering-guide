@@ -7,76 +7,70 @@
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 :GRAFANA_URL: https://grafana-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Design Chaos experiments
+= Concevoir des expériences Chaos
 
-_2 MINUTE PRACTICE_
+_2 MINUTES D'ENTRAÎNEMENT_
 
 
-== What is Chaos Engineering?
+== Qu'est-ce que l'ingénierie du chaos ?
 
 [sidebar]
-.Principles of Chaos Engineering
+.Principes de l'ingénierie du chaos
 --
-According to the Principles of Chaos Engineering (https://principlesofchaos.org/[https://principlesofchaos.org/^]), 
+Selon les principes de l'ingénierie du chaos (https://principlesofchaos.org/[https://principlesofchaos.org/^]),
 
-* **Chaos Engineering** is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
-* **Chaos Engineering**'s sole purpose is to provide evidence of system weaknesses (sometimes called https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
+* **Chaos Engineering** est la discipline de l'expérimentation sur un système afin de renforcer la confiance dans la capacité du système à résister aux conditions turbulentes dans la production.
+* **Le seul but de Chaos Engineering** est de fournir des preuves des faiblesses du système (parfois appelé https://snafucatchers.github.io/#4_6_Dark_Debt[Dark Debt^])
 --
 
-Take an example where you have two services that communicate with each other. 
+Prenez un exemple où vous avez deux services qui communiquent entre eux.
 
 image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
-* What should happen if **Service Y** dies ? 
+* Que devrait-il se passer si le service Y** meurt ?
 
-* What will happen to **Service X** if **Service Y** starts responding slowly ? 
+* Que va-t-il arriver au **Service X** si **Service Y** commence à répondre lentement ?
 
-* What happens if **Service Y** comes back after going away for a period of time? 
+* Que se passe-t-il si **Service Y** revient après être tombé pendant une période de temps ?
 
-* What happens if the connection between **Service X** and **Service Y** becomes increasingly busy ? 
+* Que se passe-t-il si la connexion entre **Service X** et **Service Y** devient de plus en plus occupée ?
 
-* What happens if the CPU that is being used by **Service Y** is maxed out? and most importantly, what does this all mean to the user?
+* Que se passe-t-il si le CPU utilisé par **Service Y** est saturé ? et surtout, que signifie tout cela pour l'utilisateur ?
 
-You might believe you've designed the services and the infrastructure perfectly to accomodate all of these cases, but _**how to you know**_ ? Even in such a simple system it is likely there might be some surprises --some **dark debt** -- present. 
+Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaite pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines **dettes noires** -- présentes.
 
-**Chaos engineering provides a way of exploring these uncertainties to find out whether your assumptions of the system's resiliency hold water in the real world.** 
+**L'ingénierie du chaos fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système sont exactes dans le monde réel.**
 
-== Plan a Chaos Experiment
+==  Planifier une expérience Chaos
 
-**Chaos Engineering** begins by asking the question : 
-
-**"Do we know what the system might do in this case ?"**
+**L'ingénierie du chaos** commence par poser la question :
+*« Savons-nous ce que le système pourrait faire dans ce cas ? »*
 
 
 image::process-chaos.png[process-chaos, 800]
 
-The general process for chaos engineering looks as follows:
+Le processus général d'ingénierie du chaos ressemble à :
 
-1. **Define a steady-state hypothesis:** You need to start with an idea of what can go awry. Start with a failure to inject and predict an outcome for when it is running live.
+1. **Définir une hypothèse stable:** Vous devez commencer par une idée de ce qui peut mal se passer. Commencez par un échec à injecter et prédire un résultat pour quand il s'exécute.
 
-2. **Confirm the steady-state and simulate some real-world events:** Perform tests using real-world scenarios to see how your system behaves under particular stress conditions or circumstances.
+2. **Confirmer l'état stable et simuler quelques événements du monde réel:** Effectuez des tests en utilisant des scénarios réels pour voir comment votre système se comporte dans des conditions de stress ou des circonstances particulières.
 
-3.  **Confirm the steady-state again:** We need to confirm what changes occurred, so checking it again gives us insights into system behavior.
+3. **Confirmer à nouveau l'état stable:** Nous avons besoin de confirmer quels changements ont eu lieu, alors vérifier à nouveau nous donne des idées sur le comportement du système.
 
-4.  **Collect metrics and observe dashboards:** You need to measure your system’s durability and availability. It is best practice to use key performance metrics that correlate with customer success or usage. We want to measure the failure against our hypothesis by looking at factors like impact on latency or requests per second.
+4. **Collecter des métriques et observer les tableaux de bord:** Vous devez mesurer la durabilité et la disponibilité de votre système. Il est préférable d'utiliser les paramètres de performance clés qui correspondent à la réussite du client ou à son utilisation. Nous voulons mesurer l'échec contre notre hypothèse en examinant des facteurs comme l'impact sur la latence ou les demandes par seconde.
 
-5. **Make changes and fix issues:** After running an experiment, you should have a good idea of what is working and what needs to be altered. Now we can identify what will lead to an outage, and we know exactly what breaks the system. So, go fix it, and try again with a new experiment.
-
+5. **Apporter des modifications et résoudre les problèmes:** Après avoir mené une expérience, vous devriez avoir une bonne idée de ce qui fonctionne et ce qui doit être modifié. Maintenant, nous pouvons identifier ce qui mènera à une panne, et nous savons exactement ce qui casse le système. Donc, allez le réparer et essayez à nouveau avec une nouvelle expérience.
 
 =======
 image::chaos-engineering-process.png[chaos-engineering-process, 600]
 =======
 
-Later on this workshop we will use **Openshift Service Mesh** to inject failures in our **Experiment** .
+Plus tard dans cet atelier nous utiliserons **Openshift Service Mesh** pour injecter des défaillances dans notre **expérience**.
 
 
 image::Chaos-Learning-Loop.png[chaos-engineering-learning-loop, 800]
 
 
-Following the **Chaos Engineering Learning Loop** the initial step is to **Explore** the target system, i.e our application, to attempt to surface or **discover** any weaknesses. The **Experiments** we will use are already written for you, using (xref:chaos-latency.adoc[5. Chaos Experiment 1: Network latency]) and (xref:chaos-error.adoc[6. Chaos Experiment 2: Unavailable Service]).
+Après la **boucle d'apprentissage de l'ingénierie du chaos** l'étape initiale est d'**explorer** le système cible, c'est-à-dire notre application, pour tenter de **découvrir** toutes les faiblesses. Les **expériences** que nous utiliserons sont déjà écrits pour vous, en utilisant (xref:chaos-latency.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error.adoc[6. Expérience Chaos 2: Service non disponible]).**Kiali** et **Openshift Developer Console** (xref:chaos-explore.adoc[3. Explorer l'application]) vous permettra d'**explorer** et de **découvrir** l'application. **Grafana** (xref:chaos-metrics.adoc[4. Définir et surveiller les paramètres Chaos] fait partie de la Découverte de l'application aussi.
 
-**Kiali** and **Openshift Developer Console** (xref:chaos-explore.adoc[3. Explore the Application]) will allow you to **explore** and to **discover** the application. **Grafana** (xref:chaos-metrics.adoc[4. Define and monitor Chaos metrics] is part of the Discovery of the application too. 
-
-When you will be ready to execute your experiment (xref:chaos-latency.adoc[5. Chaos Experiment 1: Network latency]) and (xref:chaos-error.adoc[6. Chaos Experiment 2: Unavailable Service]) you will see how the target system is reacting. You will enter the **discovery** and **analysis** phases of the **Chaos Engineering Learning Loop** and after the **analysis** you will **Improve** and **Validate** the correction made.
-
-
+Lorsque vous serez prêt à exécuter votre expérience (xref:chaos-latency.adoc[5. Expérience de Chaos 1: Latence de réseau]) et (xref:chaos-error.adoc[6. Expérience de Chaos 2: Service indisponible]) vous verrez comment le système cible réagit. Vous entrez dans les phases **découverte** et **analyse** de la boucle d'apprentissage du chaos, une fois **l'analyse** terminé, vous allez **améliorer** et **valider** la correction faite.
