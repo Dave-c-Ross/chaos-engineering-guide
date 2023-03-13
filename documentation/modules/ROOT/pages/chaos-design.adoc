@@ -27,7 +27,7 @@ Prenez un exemple où vous avez deux services qui communiquent entre eux.
 
 image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
-* Que devrait-il se passer si le service Y** meurt ?
+* Que devrait-il se passer si le **service Y** meurt ?
 
 * Que va-t-il arriver au **Service X** si **Service Y** commence à répondre lentement ?
 
