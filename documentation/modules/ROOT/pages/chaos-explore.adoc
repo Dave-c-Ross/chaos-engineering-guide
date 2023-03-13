@@ -6,7 +6,7 @@
 :APPS_HOSTNAME_SUFFIX: %APPS_HOSTNAME_SUFFIX%
 :KIALI_URL: https://kiali-istio-system.%APPS_HOSTNAME_SUFFIX%
 
-= Explore la demande
+= Explorer la demande
 
 _10 MINUTES D'ENTRAÎNEMENT_
 
