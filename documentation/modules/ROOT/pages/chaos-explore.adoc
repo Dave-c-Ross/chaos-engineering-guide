@@ -147,7 +147,7 @@ Tous les portails consomment un service appelé voyages.
 
 === Travel Agency
 
-Une deuxième partie appelée **agence-de-voyage** hébergera un ensemble de services créés pour fournir des devis de voyage.
+Une deuxième partie appelée **travel-agency** hébergera un ensemble de services créés pour fournir des devis de voyage.
 
 Un service de voyages principal sera le point d'entrée commercial de l'agence de voyages. Il reçoit en paramètres une ville de destination et un utilisateur et calcule tous les éléments qui composent un budget voyage : billet d'avion, hébergement, réservation de voiture et assurance voyage.
 
@@ -164,7 +164,7 @@ image::travels-demo-design.png[travel-demo-design - Travel demo Project deployed
 Un flux typique se compose des étapes suivantes:
 
 . Un portail interroge le service voyages pour les destinations disponibles.
-. Le service Voyages interroge les hôtels disponibles et revient à la boutique du portail.
+. Le service voyage interroge les hôtels disponibles et revient à la boutique du portail.
 . Un utilisateur sélectionne une destination et un type de voyage, qui peut inclure un vol et/ou une voiture, un hôtel et une assurance.
 . Les voitures, les hôtels et les vols peuvent bénéficier de réductions en fonction du type d'utilisateur.
 
@@ -174,7 +174,7 @@ Le **travel-control** exécute un **tableau de bord d'entreprise** avec deux fon
 
 * Autoriser les changements de paramètres pour chaque simulateur de magasin de voyage (taux de trafic, appareil, utilisateur et type de voyage).
 
-* Fournir une vue **commerciale** de l'ensemble des demandes générées par le service **travel-control** vers les services **agence de voyage**, organisées par critères commerciaux regroupés par magasin, par type de trafic et par ville.
+* Fournir une vue **commerciale** de l'ensemble des demandes générées par le service **travel-control** vers les services **travel-agency**, organisées par critères commerciaux regroupés par magasin, par type de trafic et par ville.
 
 ==  Accès à l'application
 
