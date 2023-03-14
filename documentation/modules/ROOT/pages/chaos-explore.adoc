@@ -55,7 +55,7 @@ image:prometheus-logo.png[Prometheus, 200]
 OpenShift Service Mesh utilise **Grafana** et **Prometheus** pour fournir des métriques et la surveillance pour tous les services.
 --
 
-Tracing::
+Traçage (Tracing)::
 +
 --
 image:jaeger-logo.png[Istio, 200]
