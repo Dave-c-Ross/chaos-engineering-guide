@@ -344,13 +344,11 @@ Vous avez maintenant accès au tableau de bord de Chaos Engineering.
 
 image::grafana-chaos-engineering-dashboard.png[Grafana - Home,700]
 
-== Explore le tableau de bord d'ingénierie Chaos
+== Explorer le tableau de bord d'ingénierie Chaos
 
-Retrouvez ici le Dashboard Grafana complet importé
+Retrouvez ci-dessous le Dashboard Grafana complet importé
 
 image::full-grafana-dashboard.png[Grafana - Home,900]
-
-Pour explorer ce tableau de bord on peut le voir comme :
 
 Pour explorer ce tableau de bord, nous pouvons le voir comme:
 
@@ -360,7 +358,7 @@ Pour explorer ce tableau de bord, nous pouvons le voir comme:
 
 image::dashboard-explained.png[Grafana - Home,900]
 
-Si nous zoomons dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER_ID}**, nous pouvons voir :
+Si nous faisons le zoom dans le bloc A par rapport au **NAMESPACE chaos-engineering{USER_ID}**, nous pouvons voir :
 
 image::grafana-block-A.png[Grafana - Home,900]
 
@@ -374,7 +372,7 @@ image::grafana-block-A.png[Grafana - Home,900]
 
 
 
-Si nous zoomons dans le bloc B par rapport au **SERVICE** sélectionné, nous pouvons voir :
+Si nous faisons le zoom dans le bloc B par rapport au **SERVICE** sélectionné, nous pouvons voir :
 
 image::grafana-block-B.png[Grafana - Home,900]
 
