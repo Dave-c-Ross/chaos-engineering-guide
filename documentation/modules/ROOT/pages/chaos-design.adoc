@@ -37,7 +37,7 @@ image::simple-2-service.png[simple-2-service - A simple two-service system, 700]
 
 * Que se passe-t-il si le CPU utilisé par **Service Y** est saturé ? et surtout, que signifie tout cela pour l'utilisateur ?
 
-Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaite pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines **dettes noires** -- présentes.
+Vous pouvez croire que vous avez conçu les services et l'infrastructure parfaite pour accueillir tous ces cas, mais _**comment savoir**_ ? Même dans un système aussi simple, il est probable qu'il y ait quelques surprises --certaines **dettes techniques non-découvertes (dark debt)** -- présentes.
 
 **L'ingénierie du chaos fournit une façon d'explorer ces incertitudes pour savoir si vos hypothèses de la résilience du système sont exactes dans le monde réel.**
 
