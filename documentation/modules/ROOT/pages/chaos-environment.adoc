@@ -70,7 +70,7 @@ image::gitops-model.png[gitops-model, 500]
 
 * Versionner les configurations du cluster et de l'application en utilisant Git
 * Configuration de synchronisation automatique de Git aux clusters
-* Détection d'un glissement de configuration, visualisation et correction
+* Détection d'un changement de configuration non planifié (configuration drift), visualisation et correction
 * Contrôle granulaire sur commande de synchronisation pour déploiement complexe
 * Rollback et rollforward vers n'importe quel commit Git
 * Prise en charge des modèles de manifeste (Helm, Kustomize, etc)
